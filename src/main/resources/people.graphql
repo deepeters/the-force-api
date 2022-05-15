@@ -1,11 +1,11 @@
 
-schema {
-    query: Query
-}
+#schema {
+#    query: Query
+#}
 type Query {
     allPeople: [Person]!
-    people(page: Int): [Person]!
-    person(name: String): [Person]!
+    people(page: Int): [Person]
+    #person(name: String): [Person]!
 }
 
 type Person {

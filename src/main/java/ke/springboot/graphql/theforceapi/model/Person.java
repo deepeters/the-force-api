@@ -7,6 +7,9 @@ public class Person {
     private String gender;
     private String homeword;
 
+    public Person() {
+    }
+
     public Person(String name, String height, String mass, String gender, String homeword) {
         this.name = name;
         this.height = height;

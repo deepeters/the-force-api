@@ -24,7 +24,7 @@ public class GraphQLProvider {
 
     @PostConstruct
     public void init() throws IOException {
-        final Resource resource = new ClassPathResource("schema.graphql");
+        final Resource resource = new ClassPathResource("people.graphql");
         String sdl = null;
         try {
             sdl = new String(Files.readAllBytes(resource.getFile().toPath()), StandardCharsets.UTF_8);
@@ -42,9 +42,9 @@ public class GraphQLProvider {
     }
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
-                .type(TypeRuntimeWiring.newTypeWiring("Query").dataFetcher("websites", dataFetcher.getAllPeople()))
-                .type(TypeRuntimeWiring.newTypeWiring("Query").dataFetcher("website", dataFetcher.getPeopleByName()))
-                .type(TypeRuntimeWiring.newTypeWiring("Query").dataFetcher("website", dataFetcher.getPeopleByPage()))
+                .type(TypeRuntimeWiring.newTypeWiring("Query").dataFetcher("people", dataFetcher.getAllPeople()))
+                .type(TypeRuntimeWiring.newTypeWiring("Query").dataFetcher("person", dataFetcher.getPeopleByName()))
+                .type(TypeRuntimeWiring.newTypeWiring("Query").dataFetcher("people", dataFetcher.getPeopleByPage()))
 //                .type(TypeRuntimeWiring.newTypeWiring("Mutation").dataFetcher("addWebsite", dataFetcher.addWebsite()))
 //                .type(TypeRuntimeWiring.newTypeWiring("Mutation").dataFetcher("updateWebsite",
 //                        dataFetcher.updateWebsite()))

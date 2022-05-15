@@ -10,21 +10,30 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+
 @Component
 public class GraphQLDataFetcher {
 
-    private final String REST_URL = "https://swapi.dev/api/people/";
+    private final String REST_URL = "https://swapi.dev/api/people";
+
+    private static final Logger logger = LoggerFactory.getLogger(GraphQLDataFetcher.class);
 
     @Autowired
     private RestTemplate restTemplate;
 
     public DataFetcher<List<Person>> getAllPeople(){
+        logger.info("this is a info message");
         return dataFetchingEnvironment -> {
             return restTemplate
                     .exchange(REST_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<Person>>() {
                     }).getBody();
         };
     }
+
 
     public DataFetcher<Person> getPeopleByName(){
         return dataFetchingEnvironment -> {
