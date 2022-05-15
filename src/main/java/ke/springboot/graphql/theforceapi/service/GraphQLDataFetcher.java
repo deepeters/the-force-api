@@ -1,4 +1,4 @@
-package ke.springboot.graphql.theforceapi.repository;
+package ke.springboot.graphql.theforceapi.service;
 
 import graphql.schema.DataFetcher;
 import ke.springboot.graphql.theforceapi.model.Person;
@@ -33,6 +33,7 @@ public class GraphQLDataFetcher {
         };
     }
 
+    //This class has a problem
     public DataFetcher<Person> getPeopleByPage(){
         return dataFetchingEnvironment -> {
             String page = dataFetchingEnvironment.getArgument("page");
